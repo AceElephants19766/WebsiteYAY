@@ -22,6 +22,9 @@
     <!-- Moving Background Canvas -->
     <canvas id="bg-canvas"></canvas>
 
+    <!-- Floating Gallery Container (Fixed Background Layer) -->
+    <div id="floating-gallery"></div>
+
     <!-- Background Watermark -->
     <div class="watermark-container">
         <div class="watermark-text">19766</div>
@@ -41,6 +44,7 @@
             <li><a href="#updates" class="nav-item">Updates</a></li>
             <li><a href="#events" class="nav-item">Events</a></li>
             <li><a href="#gallery" class="nav-item">Gallery</a></li>
+            <li><a href="pages/resources.html" class="nav-item">Resources</a></li>
             <li><a href="#contact" class="nav-item">Contact</a></li>
         </ul>
         <div class="nav-controls">
@@ -124,21 +128,21 @@
                     <div class="content glass-panel">
                         <h3>Season Start</h3>
                         <p>The new season has begun! We received the challenge and started brainstorming.</p>
-                        <span class="date">01.09.2025</span>
+                        <span class="date">01.10.2025</span>
                     </div>
                 </div>
                 <div class="timeline-item right" data-scroll>
                     <div class="content glass-panel">
-                        <h3>First Prototype</h3>
-                        <p>Completed initial chassis build and tested the drive system.</p>
-                        <span class="date">15.10.2025</span>
+                        <h3>Robot Ready</h3>
+                        <p>Completed build and programming. Ready for competition!</p>
+                        <span class="date">15.01.2026</span>
                     </div>
                 </div>
                 <div class="timeline-item left" data-scroll>
                     <div class="content glass-panel">
                         <h3>Regional Competition</h3>
-                        <p>Energetically preparing for the first competition in Modi'in!</p>
-                        <span class="date">01.12.2025</span>
+                        <p>Our first competition in Kfar Saba.</p>
+                        <span class="date">28.01.2026</span>
                     </div>
                 </div>
             </div>
@@ -161,21 +165,21 @@
                     </thead>
                     <tbody>
                         <tr class="event-row">
-                            <td>Off-Season 2024</td>
-                            <td>01.08.2024</td>
-                            <td>Modiin</td>
-                            <td><span class="rank-badge rank-1">1st Place 🏆</span></td>
-                        </tr>
-                        <tr class="event-row">
-                            <td>Kickoff 2025</td>
-                            <td>07.09.2025</td>
-                            <td>Herzliya</td>
-                            <td><span class="rank-badge">Participation</span></td>
-                        </tr>
-                        <tr class="event-row">
                             <td>Regional #1</td>
-                            <td>15.12.2025</td>
-                            <td>Tel Aviv</td>
+                            <td>28.01.2026</td>
+                            <td>Kfar Saba</td>
+                            <td><span class="rank-badge">16th Place</span></td>
+                        </tr>
+                        <tr class="event-row">
+                            <td>Regional #2</td>
+                            <td>25.02.2026</td>
+                            <td>Givat Brenner</td>
+                            <td><span class="status-upcoming">Coming Soon...</span></td>
+                        </tr>
+                        <tr class="event-row">
+                            <td>National Championship</td>
+                            <td>4-5.03.2026</td>
+                            <td>Hadera</td>
                             <td><span class="status-upcoming">Coming Soon...</span></td>
                         </tr>
                     </tbody>
@@ -188,14 +192,21 @@
     <section id="gallery" class="section-padding">
         <div class="container">
             <h2 class="section-title glow-text" data-scroll>Gallery</h2>
-            <div class="gallery-grid">
-                <!-- Placeholders for images -->
-                <div class="gallery-item glass-panel" data-scroll></div>
-                <div class="gallery-item glass-panel" data-scroll></div>
-                <div class="gallery-item glass-panel" data-scroll></div>
-                <div class="gallery-item glass-panel" data-scroll></div>
-                <div class="gallery-item glass-panel" data-scroll></div>
-                <div class="gallery-item glass-panel" data-scroll></div>
+            <!-- Floating Gallery moved to body level -->
+
+            <div class="gallery-container">
+                <div class="gallery-carousel">
+                    <div class="gallery-item"><img src="assets/background-pics/DSC_3901.JPG" alt="Gallery Image 1">
+                    </div>
+                    <div class="gallery-item"><img src="assets/background-pics/DSC_4150.JPG" alt="Gallery Image 2">
+                    </div>
+                    <div class="gallery-item"><img src="assets/background-pics/DSC_4151.JPG" alt="Gallery Image 3">
+                    </div>
+                    <div class="gallery-item"><img src="assets/background-pics/DSC_4628.JPG" alt="Gallery Image 4">
+                    </div>
+                    <div class="gallery-item"><img src="assets/background-pics/DSC_4639.JPG" alt="Gallery Image 5">
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -205,8 +216,7 @@
         <div class="container footer-content">
             <div class="footer-section">
                 <h3>Contact Us</h3>
-                <p>Email: contact@ftcteam.com</p>
-                <p>Phone: 050-1234567</p>
+                <p><i class="fas fa-envelope"></i> elephants19766@gmail.com</p>
             </div>
             <div class="social-links">
                 <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>

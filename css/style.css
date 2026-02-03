@@ -662,35 +662,175 @@ h3 {
 
 
 
-/* Gallery Grid */
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    grid-gap: 20px;
+
+/* 3D Gallery Carousel (Restored) */
+.gallery-container {
+    perspective: 1000px;
+    width: 100%;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 5;
+    /* Ensure it sits above the floating background */
+}
+
+.gallery-carousel {
+    width: 300px;
+    height: 200px;
+    position: relative;
+    transform-style: preserve-3d;
+    animation: rotateCarousel 20s infinite linear;
+}
+
+.gallery-carousel:hover {
+    animation-play-state: paused;
 }
 
 .gallery-item {
-    height: 250px;
-    background-color: rgba(255, 255, 255, 0.05);
-    /* Placeholder */
-    box-shadow: 0 0 0 transparent;
-    /* Base for smooth transition */
-    border: 1px solid transparent;
-    transition: all 0.6s ease;
+    position: absolute;
+    width: 300px;
+    height: 200px;
+    left: 0;
+    top: 0;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid var(--primary-purple);
+    border-radius: 10px;
+    overflow: hidden;
 }
 
-
-.gallery-item:hover {
-    transform: scale(1.02);
-    box-shadow: 0 0 30px rgba(157, 0, 255, 0.3);
-    border-color: var(--primary-purple);
+/* Individual Item Positioning for Carousel */
+.gallery-item:nth-child(1) {
+    transform: rotateY(0deg) translateZ(400px);
 }
 
-/* Footer */
+.gallery-item:nth-child(2) {
+    transform: rotateY(72deg) translateZ(400px);
+}
+
+.gallery-item:nth-child(3) {
+    transform: rotateY(144deg) translateZ(400px);
+}
+
+.gallery-item:nth-child(4) {
+    transform: rotateY(216deg) translateZ(400px);
+}
+
+.gallery-item:nth-child(5) {
+    transform: rotateY(288deg) translateZ(400px);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+    display: block;
+}
+
+@keyframes rotateCarousel {
+    from {
+        transform: rotateY(0deg);
+    }
+
+    to {
+        transform: rotateY(360deg);
+    }
+}
+
+/* Responsive fixes for carousel */
+@media (max-width: 600px) {
+    .gallery-container {
+        height: 300px;
+    }
+
+    .gallery-carousel {
+        width: 200px;
+        height: 133px;
+    }
+
+    .gallery-item {
+        width: 200px;
+        height: 133px;
+    }
+
+    .gallery-item:nth-child(1) {
+        transform: rotateY(0deg) translateZ(250px);
+    }
+
+    .gallery-item:nth-child(2) {
+        transform: rotateY(72deg) translateZ(250px);
+    }
+
+    .gallery-item:nth-child(3) {
+        transform: rotateY(144deg) translateZ(250px);
+    }
+
+    .gallery-item:nth-child(4) {
+        transform: rotateY(216deg) translateZ(250px);
+    }
+
+    .gallery-item:nth-child(5) {
+        transform: rotateY(288deg) translateZ(250px);
+    }
+}
+
+/* Floating Background Gallery */
+#floating-gallery {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* height set in JS */
+    z-index: -1;
+    pointer-events: none;
+    overflow: hidden;
+    perspective: 1500px;
+    /* Stronger perspective for better depth */
+}
+
+.float-item {
+    position: absolute;
+    opacity: 0.3;
+    /* Subtle to not clutter */
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    /* Deep shadow for depth */
+    overflow: hidden;
+    will-change: transform;
+}
+
+.float-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Generic Drift Keyframes (used with random durations) */
+@keyframes drift {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-20px) rotate(2deg);
+    }
+
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+}
+
+/* Update Footer to not have a top margin */
 footer {
     padding: 50px 0 20px;
     margin-top: 50px;
     border-top: 1px solid rgba(157, 0, 255, 0.2);
+    position: relative;
+    z-index: 2;
+    /* Ensure footer is above floating images */
 }
 
 .footer-content {
@@ -859,5 +999,14 @@ html[dir="ltr"] .events-table td:last-child {
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+@media (max-width: 600px) {
+
+    /* Scale down floating items on mobile */
+    .float-item {
+        transform-origin: center center;
+        scale: 0.6;
     }
 }

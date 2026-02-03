@@ -22,6 +22,9 @@
     <!-- Moving Background Canvas -->
     <canvas id="bg-canvas"></canvas>
 
+    <!-- Floating Gallery Container (Fixed Background Layer) -->
+    <div id="floating-gallery"></div>
+
     <!-- Background Watermark -->
     <div class="watermark-container">
         <div class="watermark-text">19766</div>
@@ -41,6 +44,7 @@
             <li><a href="#updates" class="nav-item">עדכונים</a></li>
             <li><a href="#events" class="nav-item">אירועים</a></li>
             <li><a href="#gallery" class="nav-item">גלריה</a></li>
+            <li><a href="pages/resources.html" class="nav-item">משאבים</a></li>
             <li><a href="#contact" class="nav-item">צור קשר</a></li>
         </ul>
         <div class="nav-controls">
@@ -188,38 +192,46 @@
     <section id="gallery" class="section-padding">
         <div class="container">
             <h2 class="section-title glow-text" data-scroll>גלריה</h2>
-            <div class="gallery-grid">
-                <!-- Placeholders for images -->
-                <div class="gallery-item glass-panel" data-scroll></div>
-                <div class="gallery-item glass-panel" data-scroll></div>
-                <div class="gallery-item glass-panel" data-scroll></div>
-                <div class="gallery-item glass-panel" data-scroll></div>
-                <div class="gallery-item glass-panel" data-scroll></div>
-                <div class="gallery-item glass-panel" data-scroll></div>
-            </div>
-        </div>
-    </section>
+            <!-- Floating Gallery moved to body level -->
 
-    <!-- Footer -->
-    <footer id="contact" class="glass-panel">
-        <div class="container footer-content">
-            <div class="footer-section">
-                <h3>צור קשר</h3>
-                <p>Email: contact@ftcteam.com</p>
-                <p>Phone: 050-1234567</p>
+            <div class="gallery-container">
+                <div class="gallery-carousel">
+                    <div class="gallery-item"><img src="assets/background-pics/DSC_3901.JPG" alt="Gallery Image 1">
+                    </div>
+                    <div class="gallery-item"><img src="assets/background-pics/DSC_4150.JPG" alt="Gallery Image 2">
+                    </div>
+                    <div class="gallery-item"><img src="assets/background-pics/DSC_4151.JPG" alt="Gallery Image 3">
+                    </div>
+                    <div class="gallery-item"><img src="assets/background-pics/DSC_4628.JPG" alt="Gallery Image 4">
+                    </div>
+                    <div class="gallery-item"><img src="assets/background-pics/DSC_4639.JPG" alt="Gallery Image 5">
+                    </div>
+                </div>
             </div>
-            <div class="social-links">
-                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
-                <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
-            </div>
-        </div>
-        <div class="credits">
-            <p>&copy; 2026 FTC Team. All Rights Reserved.</p>
-        </div>
-    </footer>
 
-    <script src="js/script.js"></script>
+            <!-- Footer -->
+            <footer id="contact" class="glass-panel">
+                <div class="container footer-content">
+                    <div class="footer-section">
+                        <h3>צור קשר</h3>
+                        <p><i class="fas fa-envelope"></i> elephants19766@gmail.com</p>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/ace_elephants_19766?igsh=amg4djYwNWZnY3U5"
+                            class="social-icon" target="_blank" rel="noopener noreferrer"><i
+                                class="fab fa-instagram"></i></a>
+                        <a href="https://github.com/AceElephants19766" class="social-icon" target="_blank"
+                            rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+                        <a href="https://www.youtube.com/@AceElephants" class="social-icon" target="_blank"
+                            rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="credits">
+                    <p>&copy; 2026 Ace Elephants #19766. All Rights Reserved</p>
+                </div>
+            </footer>
+
+            <script src="js/script.js"></script>
 </body>
 
 </html>

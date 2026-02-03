@@ -1,0 +1,53 @@
+/* Sub-Pages Shared Styles */
+
+/* Header Layout */
+.page-header {
+    padding-top: 120px;
+    padding-bottom: 60px;
+    text-align: center;
+}
+
+/* Content Layout */
+.content-section {
+    padding: 40px 0;
+    font-size: 1.1rem;
+}
+
+/* Sub-page Glass Panel Spacing */
+.glass-panel {
+    margin-bottom: 30px;
+}
+
+/* Back Button */
+.back-btn-fixed {
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    /* Top Right RTL */
+    z-index: 1001;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+}
+
+/* Code Block (Software Page) */
+.code-container {
+    margin-top: 30px;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 10px;
+    direction: ltr;
+    text-align: left;
+    overflow-x: auto;
+}
+
+.code-container pre {
+    margin: 0;
+}
+
+.code-container code {
+    color: #bd00ff;
+    font-family: 'Consolas', monospace;
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="documentElement" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pop Model Creation</title>
+    <link rel="icon" type="image/svg+xml" href="../assets/logo.svg">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+
+<body>
+    <!-- Back Arrow -->
+    <a href="../index.html#experience" class="back-arrow" aria-label="Go Back">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 12H5M12 19l-7-7 7-7" />
+        </svg>
+    </a>
+
+    <div class="project-container">
+
+        <!-- Header Image -->
+        <div class="project-hero">
+            <img src="../assets/normal-pop.png" alt="Project Image">
+            <div class="project-title">Pop Model Creation</div>
+        </div>
+
+        <!-- Text -->
+        <div class="project-text">
+            <h2>About Pop Model Creation</h2>
+            <p>
+In this project, I worked on creating a custom POP model for Minecraft players, covering the full process from initial concept to in-game implementation. The model was built in Blockbench, with proper separation into body parts (head, body, arms, and legs), clean hierarchy and parenting, and full compatibility with Minecraft’s player model structure. I also created and mapped a custom texture, working directly with UV mapping to ensure each part of the model was textured accurately without distortion.
+
+The model was then integrated into the server using ItemsAdder, including configuration of custom model data, linking the model and textures, and validating correct rendering on players in-game. During integration, I adjusted scale, offsets, and rotations to ensure the model fit correctly on the player and did not interfere with existing animations or player visuals. I performed multiple in-game tests to verify version compatibility and visual consistency, refining both the model and textures as needed.
+
+This project strengthened my understanding of custom Minecraft models, the workflow between Blockbench and ItemsAdder, and the complete pipeline of creating and deploying custom visual content from design to live server usage.
+            </p>
+        </div>
+
+        <!-- Gallery -->
+        <div class="gallery">
+            <div class="gallery-track">
+                <img src="../assets/normal-pop.png" onclick="openModal(this.src)">
+                <img src="../assets/agam-pop.png" onclick="openModal(this.src)">
+                <img src="../assets/paint-pop.png" onclick="openModal(this.src)">
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="imageModal" class="modal" onclick="closeModal()">
+        <img id="modalImg">
+    </div>
+
+    <script src="../js/script.js" defer></script>
+
+</body>
+
+</html>

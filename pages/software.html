@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ace Elephants | Software</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700;900&family=Orbitron:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Linking to main CSS (adjusted path) -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/subpages.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Background Canvas -->
+    <canvas id="bg-canvas"></canvas>
+
+    <!-- Back Button -->
+    <a href="../index.html#about" class="cta-button back-btn-fixed" data-i18n="backValues">
+        <i class="fas fa-arrow-right"></i> חזרה
+    </a>
+
+    <div class="container">
+        <header class="page-header fade-in-up">
+            <h1 class="main-title glow-text" data-i18n="softwareTitle">צוות תוכנה</h1>
+            <p class="hero-subtitle" data-i18n="softwareSubtitle">המוח מאחורי הרובוט</p>
+        </header>
+
+        <section class="content-section glass-panel" style="padding: 40px;">
+            <h2 class="section-title" style="font-size: 2rem; margin-bottom: 30px;" data-i18n="softwareProcessTitle">התהליך שלנו</h2>
+            <p data-i18n="softwareProcessText">כאן נכתוב על תהליך הפיתוח, האלגוריתמים, והשימוש ב-Java ו-OpenCV. התוכנה שלנו מאפשרת לרובוט לפעול באופן
+                אוטונומי ולזהות אלמנטים במשחק בזמן אמת.</p>
+
+            <div class="code-container">
+                <pre><code>public class AceRobot extends Robot {
+    @Override
+    public void runOpMode() {
+        telemetry.addData("Status", "Initialized");
+        waitForStart();
+        // Autonomous Magic Happens Here
+        visionSystem.detectGameElement();
+    }
+}</code></pre>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2 class="section-title glow-text" data-i18n="softwareGalleryTitle">גלריה טכנית</h2>
+            <div class="gallery-grid">
+                <!-- Placeholders -->
+                <div class="gallery-item glass-panel"></div>
+                <div class="gallery-item glass-panel"></div>
+                <div class="gallery-item glass-panel"></div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer id="contact" class="glass-panel">
+        <div class="container footer-content">
+            <div class="footer-section">
+                <h3>צור קשר</h3>
+                <p>Email: contact@ftcteam.com</p>
+            </div>
+            <div class="credits">
+                <p>&copy; 2026 FTC Team. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
+    <script src="../js/subpages.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="documentElement" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ParlaGames - BoxPVP</title>
+    <link rel="icon" type="image/svg+xml" href="../assets/logo.svg">
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+
+<body>
+    <!-- Back Arrow -->
+    <a href="../index.html#experience" class="back-arrow" aria-label="Go Back">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 12H5M12 19l-7-7 7-7" />
+        </svg>
+    </a>
+
+    <div class="project-container">
+
+        <!-- תמונת כותרת -->
+        <div class="project-hero">
+            <img src="../assets/boxpvp.png" alt="Project Image">
+            <div class="project-title">ParlaGames Update - BoxPVP</div>
+        </div>
+
+        <!-- טקסט -->
+        <div class="project-text">
+            <h2>About the Project</h2>
+            <p>
+                As a development partner on the major re-release of the BoxPvP game mode, I was responsible for
+                implementing core gameplay changes, balancing systems, and refining the overall player experience. Using
+                Java, the Paper API, and structured data storage via MySQL, I developed the updated health mechanic that
+                grants temporary hearts on kills, redesigned the progression and leveling system for more accurate and
+                fair scaling, and integrated new kits across all ranks with dynamic configuration handling. I also
+                worked on introducing rotating maps—including one adapted from the lobby—alongside a new loot-chest
+                system featuring visual key items, reward logic, and probability-based drop mechanics, including items
+                that increase key-drop chances. Throughout the update, I handled essential bug fixes such as ensuring
+                kill detection works properly with End Crystals and TNT, preventing effects from persisting after death,
+                and implementing a reliable system that preserves selected kits even after relogging. The work required
+                precise balancing, extensive QA, performance optimization, and close collaboration with the team to
+                ensure all new features integrated seamlessly into the existing architecture while delivering a
+                smoother, more polished BoxPvP experience.
+            </p>
+        </div>
+
+        <!-- גלריית תמונות -->
+        <div class="gallery">
+            <button class="gallery-btn left" onclick="moveSlide(-1)">❮</button>
+            <div class="gallery-track">
+                <img src="../assets/boxpvp.png" onclick="openModal(this.src)">
+                <img src="../assets/box-flor.png" onclick="openModal(this.src)">
+                <img src="../assets/creats.png" onclick="openModal(this.src)">
+                <img src="../assets/water.png" onclick="openModal(this.src)">
+            </div>
+            <button class="gallery-btn right" onclick="moveSlide(1)">❯</button>
+        </div>
+    </div>
+
+    <!-- מודל לתצוגה מוגדלת -->
+    <div id="imageModal" class="modal" onclick="closeModal()">
+        <img id="modalImg">
+    </div>
+
+    <script src="../js/script.js" defer></script>
+
+</body>
+
+</html>

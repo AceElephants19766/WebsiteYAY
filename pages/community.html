@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ace Elephants | Community</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700;900&family=Orbitron:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/subpages.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .page-header {
+            padding-top: 120px;
+            padding-bottom: 60px;
+            text-align: center;
+        }
+
+        .back-btn-fixed {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            z-index: 1001;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="bg-canvas"></canvas> <!-- Back Button -->
+    <a href="../index.html#about" class="cta-button back-btn-fixed" data-i18n="backValues"><i
+            class="fas fa-arrow-right"></i> חזרה</a>
+
+    <div class="container">
+        <header class="page-header fade-in-up">
+            <h1 class="main-title glow-text" data-i18n="communityTitle">קהילה</h1>
+            <p class="hero-subtitle" data-i18n="communitySubtitle">להעביר את הידע הלאה</p>
+        </header>
+
+        <section class="glass-panel" style="padding: 40px; margin-bottom: 40px;">
+            <h2 class="section-title" style="font-size: 2rem;" data-i18n="communityProcessTitle">התנדבות והדרכה</h2>
+            <p data-i18n="communityProcessText">אנחנו מאמינים בשיתוף ידע. אנחנו חונכים קבוצות צעירות (FLL), מארגנים
+                פעילויות טכנולוגיות בקהילה, ופועלים
+                להפצת ערכי ה-FIRST בכל מקום שאנחנו מגיעים אליו.</p>
+        </section>
+
+        <section class="content-section">
+            <h2 class="section-title glow-text" data-i18n="communityGalleryTitle">הפעילות שלנו</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item glass-panel"></div>
+                <div class="gallery-item glass-panel"></div>
+                <div class="gallery-item glass-panel"></div>
+            </div>
+        </section>
+    </div>
+
+    <footer class="glass-panel" style="margin-top:50px;">
+        <div class="container footer-content">
+            <div class="footer-section">
+                <h3 data-i18n="footerContact">צור קשר</h3>
+                <p>contact@ftcteam.com</p>
+            </div>
+            <div class="credits">
+                <p>&copy; 2026 FTC Team. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="../js/script.js"></script>
+    <script src="../js/subpages.js"></script>
+</body>
+
+</html>

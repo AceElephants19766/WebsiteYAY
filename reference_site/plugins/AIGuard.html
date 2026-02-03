@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="documentElement" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIGuard Plugin</title>
+    <link rel="icon" type="image/svg+xml" href="../assets/logo.svg">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/plugins.css">
+</head>
+
+<body>
+    <!-- Back Arrow -->
+    <a href="../index.html#plugins" class="back-arrow" aria-label="Go Back">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 12H5M12 19l-7-7 7-7" />
+        </svg>
+    </a>
+
+    <div class="project-container">
+
+        <!-- Header Image -->
+        <div class="project-hero">
+            <img src="../assets/AIGuard-pic.png" alt="Plugin Image">
+            <div class="project-title">AIGuard Plugin</div>
+        </div>
+
+        <!-- Text -->
+        <div class="project-text">
+            <h2>About AIGuard</h2>
+            <p>
+                <strong>AIGuard</strong> is an advanced Minecraft plugin (Spigot / Paper 1.20+) that monitors chat
+                messages in real time and detects the use of inappropriate or banned words using <strong>Fuzzy
+                    Matching</strong> algorithms. Instead of relying on exact word matching, the plugin is capable of
+                identifying bypass attempts such as spacing, character substitutions, distorted spelling, or fragmented
+                words. The system is designed to assist staff members rather than replace human judgment, providing
+                clear and detailed alerts for moderation purposes.
+            </p>
+
+            <h3 class="feature-title">Core Features</h3>
+
+            <div class="features-grid">
+                <div class="feature-item">
+                    <h4>Advanced Detection</h4>
+                    <ul>
+                        <li>Uses Levenshtein Distance and Cosine Similarity to detect variations.</li>
+                        <li>Configurable sensitivity level via a similarity threshold.</li>
+                        <li>Detects disguised or indirect word usage.</li>
+                    </ul>
+                </div>
+
+                <div class="feature-item">
+                    <h4>Performance</h4>
+                    <ul>
+                        <li>Asynchronous processing ensures chat messages are not blocked.</li>
+                        <li>Lightweight and optimized for high-traffic servers.</li>
+                        <li>Efficient memory and runtime management.</li>
+                    </ul>
+                </div>
+
+                <div class="feature-item">
+                    <h4>Server Network Support (BungeeCord)</h4>
+                    <ul>
+                        <li>Sends alerts across all servers in a network.</li>
+                        <li>Clearly identifies the server where the message originated.</li>
+                        <li>Uses Plugin Messaging for fast cross-server communication.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3 class="feature-title">Commands & Permissions</h3>
+            <div class="code-wrapper">
+                <div class="code-header">
+                    <span class="code-lang">Commands</span>
+                    <button class="copy-btn" onclick="copyCode(this)">
+                        <img src="../assets/copy-icon.png" alt="Copy">
+                        Copy
+                    </button>
+                </div>
+                <pre><code>/aiguard reload <span class="token-comment"># Reloads configuration</span>
+/ag reload      <span class="token-comment"># Alias for reload</span></code></pre>
+            </div>
+
+            <table class="perms-table">
+                <tr>
+                    <td><code>aiwatch.admin</code></td>
+                    <td>Access to administrative commands</td>
+                </tr>
+                <tr>
+                    <td><code>aiwatch.alert</code></td>
+                    <td>Receive alerts for flagged messages</td>
+                </tr>
+                <tr>
+                    <td><code>aiwatch.*</code></td>
+                    <td>Grants all permissions</td>
+                </tr>
+            </table>
+
+            <h3 class="feature-title">Configuration</h3>
+            <p>Example <code>config.yml</code>:</p>
+            <div class="code-wrapper">
+                <div class="code-header">
+                    <span class="code-lang">YAML</span>
+                    <button class="copy-btn" onclick="copyCode(this)">
+                        <img src="../assets/copy-icon.png" alt="Copy">
+                        Copy
+                    </button>
+                </div>
+                <pre><code><span class="token-comment"># Similarity threshold (0.0 - 1.0)</span>
+<span class="token-key">similarity_threshold:</span> <span class="token-number">0.75</span>
+
+<span class="token-comment"># List of banned words</span>
+<span class="token-key">banned_words:</span>
+  - <span class="token-string">"idiot"</span>
+  - <span class="token-string">"dumb"</span>
+  - <span class="token-string">"stupid"</span>
+  - <span class="token-string">"noob"</span>
+
+<span class="token-comment"># Enable BungeeCord</span>
+<span class="token-key">bungee:</span>
+  <span class="token-key">enabled:</span> <span class="token-boolean">true</span>
+  <span class="token-key">channel:</span> <span class="token-string">"aiguard:alerts"</span>
+
+<span class="token-key">server_name:</span> <span class="token-string">"Survival"</span></code></pre>
+            </div>
+
+            <h3 class="feature-title">Ticket System</h3>
+            <p>In addition to chat alerts, the plugin operates with a ticket-based moderation system:</p>
+            <ul>
+                <li>When a player sends a flagged message, a <strong>ticket is automatically created</strong>.</li>
+                <li>Tickets are queued to prevent duplicate handling.</li>
+                <li>Staff can claim tickets to handle cases individually.</li>
+                <li>Provides detailed info, server origin, and teleport options.</li>
+            </ul>
+            <br>
+
+            <!-- Details Table -->
+            <table class="plugin-details">
+                <tr>
+                    <th>Version</th>
+                    <td>1.21.8</td>
+                </tr>
+                <tr>
+                    <th>Support</th>
+                    <td>Paper, Spigot, Purpur (1.16 - 1.21)</td>
+                </tr>
+                <tr>
+                    <th>Category</th>
+                    <td>Security</td>
+                </tr>
+                <tr>
+                    <th>Last Updated</th>
+                    <td>Jan 20, 2026</td>
+                </tr>
+            </table>
+
+            <!-- Download Button -->
+            <a href="../downloads/aiguard-2.1.2.jar" download="aiguard-2.1.2.jar" class="btn-download">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                Download Plugin
+            </a>
+        </div>
+
+        <!-- Gallery -->
+        <div class="gallery">
+            <div class="gallery-track">
+                <img src="../assets/boxpvp.png" onclick="openModal(this.src)">
+                <img src="../assets/box-flor.png" onclick="openModal(this.src)">
+                <img src="../assets/creats.png" onclick="openModal(this.src)">
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="imageModal" class="modal" onclick="closeModal()">
+        <img id="modalImg">
+    </div>
+
+    <script src="../js/script.js" defer></script>
+
+</body>
+
+</html>

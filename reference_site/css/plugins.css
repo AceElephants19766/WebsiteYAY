@@ -1,0 +1,185 @@
+/* === Content Styling for Plugin Pages === */
+.project-text {
+    direction: ltr !important;
+    /* Force LTR for English content */
+    text-align: left !important;
+}
+
+.project-hero {
+    height: 300px;
+    overflow: hidden;
+    border-radius: 12px;
+    margin-bottom: 30px;
+}
+
+.project-hero img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.feature-title {
+    margin-top: 32px;
+    margin-bottom: 16px;
+    color: var(--accent);
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 8px;
+    font-size: 1.5rem;
+    direction: ltr;
+    text-align: left;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+    direction: ltr;
+}
+
+.feature-item {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid var(--line);
+    transition: transform 0.2s;
+    text-align: left;
+}
+
+.feature-item:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent);
+}
+
+.feature-item h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #fff;
+    font-size: 1.1rem;
+}
+
+.feature-item ul {
+    padding-left: 20px;
+    margin: 0;
+}
+
+.feature-item li {
+    margin-bottom: 6px;
+    color: #ccc;
+}
+
+/* === Mac-Style Code Block === */
+.code-wrapper {
+    background: #1e1e1e;
+    border-radius: 8px;
+    border: 1px solid #333;
+    margin-bottom: 24px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    direction: ltr;
+    text-align: left;
+}
+
+.code-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #2d2d2d;
+    padding: 8px 16px;
+    border-bottom: 1px solid #333;
+}
+
+.code-lang {
+    font-family: 'Consolas', monospace;
+    font-size: 0.85rem;
+    color: #aaa;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.copy-btn {
+    background: rgba(255, 255, 255, 0.08);
+    /* Flat background, no gradient/shine */
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #ddd;
+    border-radius: 6px;
+    padding: 6px 10px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s;
+    font-family: inherit;
+    box-shadow: none !important;
+    /* Force remove any shine/shadow */
+}
+
+.copy-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.copy-btn img {
+    width: 16px;
+    height: 16px;
+    filter: brightness(0.8);
+    transition: filter 0.2s;
+}
+
+.copy-btn:hover img {
+    filter: brightness(1);
+}
+
+.code-wrapper pre {
+    margin: 0;
+    padding: 20px;
+    overflow-x: auto;
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #d4d4d4;
+    background: #1e1e1e;
+    /* Ensure contrast */
+}
+
+/* Syntax Highlighting Colors */
+.token-comment {
+    color: #6a9955;
+}
+
+.token-key {
+    color: #9cdcfe;
+}
+
+.token-string {
+    color: #ce9178;
+}
+
+.token-boolean {
+    color: #569cd6;
+}
+
+.token-number {
+    color: #b5cea8;
+}
+
+.perms-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    font-size: 0.95rem;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 8px;
+    overflow: hidden;
+    direction: ltr;
+    text-align: left;
+}
+
+.perms-table td {
+    padding: 12px;
+    border-bottom: 1px solid #333;
+    color: #ccc;
+}

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ace Elephants | Team #19766</title>
+    <title>Ace Elephants | בית</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="css/style.css">
     <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="assets/icons/logo.svg">
 </head>
 
 <body>
@@ -39,21 +40,20 @@
             </div>
         </a>
         <ul class="nav-links">
-            <li><a href="#about" class="nav-item">עלינו</a></li>
+            <li><a href="#about" class="nav-item">אודות</a></li>
             <li><a href="#teams" class="nav-item">הצוותים שלנו</a></li>
+            <li><a href="pages/resources.html" target="_blank" rel="noopener noreferrer" class="nav-item">משאבים</a>
+            </li>
             <li><a href="#updates" class="nav-item">עדכונים</a></li>
             <li><a href="#events" class="nav-item">אירועים</a></li>
             <li><a href="#gallery" class="nav-item">גלריה</a></li>
-            <li><a href="pages/resources.html" class="nav-item">משאבים</a></li>
             <li><a href="#contact" class="nav-item">צור קשר</a></li>
         </ul>
         <div class="nav-controls">
-            <button id="theme-toggle" class="cta-button small-btn icon-btn" aria-label="Toggle Theme"><i
+            <button id="theme-toggle" class="cta-button small-btn icon-btn glow-box" aria-label="Toggle Theme"><i
                     class="fas fa-palette"></i></button>
-            <a href="en.html" class="lang-switch cta-button small-btn">EN</a>
         </div>
     </nav>
-
 
     <!-- Hero Section -->
     <header id="home" class="hero-section">
@@ -75,11 +75,12 @@
             <h2 class="section-title glow-text" data-scroll>מי אנחנו?</h2>
             <div class="glass-panel" style="padding: 40px;" data-scroll>
                 <p style="font-size: 1.2rem; line-height: 1.8;">
-                    אנחנו קבוצת <strong>Ace Elephants #19766</strong>.קבוצת הרובוטיקה של חצור הלילית והאיזור
+                    <strong>Ace Elephants #19766</strong>, קבוצת רובוטיקה מחצור הגלילית המשתתפת בתחרות
+                    FIRST Tech Challenge.
                     <br><br>
-                    הקבוצה שלנו מורכבת מתלמידים מלאי תשוקה לטכנולוגיה, יצירה וחדשנות. אנחנו לא רק בונים רובוטים – אנחנו
-                    לומדים לעבוד כצוות, לפתור בעיות מורכבות, ולתרום לקהילה שסביבנו. המטרה שלנו היא לפרוץ גבולות, ללמוד,
-                    ובעיקר – ליהנות מהדרך!
+                    הקבוצה מורכבת מתלמידים שאוהבים טכנולוגיה ואתגרים, ועובדים יחד על תכנון, בנייה ותכנות של רובוטים.
+                    לאורך הדרך אנחנו מפתחים חשיבה הנדסית, עבודת צוות ויכולת להתמודד עם בעיות אמיתיות.
+                    המטרה שלנו היא להשתפר כל הזמן, ללמוד דברים חדשים ולייצג את הקהילה שלנו בכבוד – תוך כדי הנאה מהתהליך.
                 </p>
             </div>
         </div>
@@ -94,25 +95,42 @@
                     style="text-decoration: none; color: inherit; display: block;">
                     <i class="fas fa-code card-icon"></i>
                     <h3>תוכנה</h3>
-                    <p>אחראים על תכנות הרובוט</p>
+                    <p>אלגוריתמים חכמים, ראייה ממוחשבת ואוטונומיה.</p>
                 </a>
                 <a href="pages/mechanics.html" class="about-card glass-panel" data-scroll
                     style="text-decoration: none; color: inherit; display: block;">
                     <i class="fas fa-cogs card-icon"></i>
                     <h3>מכניקה</h3>
-                    <p>אחראים על בניית הרובוט</p>
+                    <p>תכנון, ייצור והרכבה בדיוק מירבי.</p>
                 </a>
                 <a href="pages/marketing.html" class="about-card glass-panel" data-scroll
                     style="text-decoration: none; color: inherit; display: block;">
                     <i class="fas fa-bullhorn card-icon"></i>
-                    <h3>שיווק ומדיה</h3>
-                    <p>אחראים על שיווק ומדיה</p>
+                    <h3>שיווק</h3>
+                    <p>ניהול מותג, מדיה חברתית וגיוס משאבים.</p>
                 </a>
                 <a href="pages/community.html" class="about-card glass-panel" data-scroll
                     style="text-decoration: none; color: inherit; display: block;">
                     <i class="fas fa-users card-icon"></i>
                     <h3>קהילה</h3>
-                    <p>אחראים על שיפור ושייוק בקהילה</p>
+                    <p>התנדבות, חינוך והפצת ערכי FIRST.</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources CTA Banner -->
+    <section id="resources" class="cta-banner-section fade-in-up" style="padding: 20px 0; margin-bottom: 20px;">
+        <div class="container">
+            <div class="glass-panel"
+                style="padding: 15px 30px; display: flex; align-items: center; justify-content: center; gap: 20px; border-color: var(--neon-purple); background: rgba(157, 0, 255, 0.1);">
+                <p style="margin: 0; font-size: 1.1rem; font-weight: bold; color: var(--text-main);">
+                    רוצים לראות מדריכים, משאבים, קורסים וכלים חדשים? לחצו כאן
+                </p>
+                <a href="pages/resources.html" target="_blank" rel="noopener noreferrer"
+                    class="icon-btn cta-resources-btn"
+                    style="background: var(--neon-purple); color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: all 0.3s ease;">
+                    <i class="fas fa-arrow-left"></i>
                 </a>
             </div>
         </div>
@@ -121,28 +139,28 @@
     <!-- Updates Timeline -->
     <section id="updates" class="section-padding relative">
         <div class="container">
-            <h2 class="section-title glow-text" data-scroll>עדכונים שוטפים</h2>
+            <h2 class="section-title glow-text" data-scroll>עדכונים אחרונים</h2>
             <div class="timeline">
-                <!-- Timeline items will go here -->
+                <!-- Timeline items -->
                 <div class="timeline-item left" data-scroll>
                     <div class="content glass-panel">
-                        <h3>תחילת עבודה על הרובוט</h3>
-                        <p>התחלנו לעבוד על הרובוט החדש</p>
+                        <h3>תחילת עונה</h3>
+                        <p>העונה החדשה החלה! קיבלנו את האתגר והתחלנו בסיעור מוחות.</p>
                         <span class="date">01.10.2025</span>
                     </div>
                 </div>
                 <div class="timeline-item right" data-scroll>
                     <div class="content glass-panel">
-                        <h3>רובוט מתפקד ומוכן</h3>
-                        <p>הכנות אחרונות לקראת התחרות</p>
-                        <span class="date">15.1.2026</span>
+                        <h3>הרובוט מוכן</h3>
+                        <p>סיימנו את הבנייה והתכנות. מוכנים לתחרות!</p>
+                        <span class="date">15.01.2026</span>
                     </div>
                 </div>
                 <div class="timeline-item left" data-scroll>
                     <div class="content glass-panel">
-                        <h3>תחרות איזורית</h3>
-                        <p>תחרות מוקדמת בכפר סבא</p>
-                        <span class="date">28.1.2026</span>
+                        <h3>תחרות אזורית</h3>
+                        <p>התחרות הראשונה שלנו בכפר סבא.</p>
+                        <span class="date">28.01.2026</span>
                     </div>
                 </div>
             </div>
@@ -165,20 +183,20 @@
                     </thead>
                     <tbody>
                         <tr class="event-row">
-                            <td>תחרות מוקדמות ראשונה</td>
-                            <td>28.1.2026</td>
+                            <td>אזורית #1</td>
+                            <td>28.01.2026</td>
                             <td>כפר סבא</td>
                             <td><span class="rank-badge">מקום 16</span></td>
                         </tr>
                         <tr class="event-row">
-                            <td>תחרות מוקדמות שנייה</td>
-                            <td>25.2.2026</td>
+                            <td>אזורית #2</td>
+                            <td>25.02.2026</td>
                             <td>גבעת ברנר</td>
                             <td><span class="status-upcoming">בקרוב...</span></td>
                         </tr>
                         <tr class="event-row">
-                            <td>תחרות ארצית</td>
-                            <td>4-5.3.2026</td>
+                            <td>אליפות ארצית</td>
+                            <td>4-5.03.2026</td>
                             <td>חדרה</td>
                             <td><span class="status-upcoming">בקרוב...</span></td>
                         </tr>
@@ -194,44 +212,51 @@
             <h2 class="section-title glow-text" data-scroll>גלריה</h2>
             <!-- Floating Gallery moved to body level -->
 
-            <div class="gallery-container">
-                <div class="gallery-carousel">
-                    <div class="gallery-item"><img src="assets/background-pics/DSC_3901.JPG" alt="Gallery Image 1">
-                    </div>
-                    <div class="gallery-item"><img src="assets/background-pics/DSC_4150.JPG" alt="Gallery Image 2">
-                    </div>
-                    <div class="gallery-item"><img src="assets/background-pics/DSC_4151.JPG" alt="Gallery Image 3">
-                    </div>
-                    <div class="gallery-item"><img src="assets/background-pics/DSC_4628.JPG" alt="Gallery Image 4">
-                    </div>
-                    <div class="gallery-item"><img src="assets/background-pics/DSC_4639.JPG" alt="Gallery Image 5">
-                    </div>
-                </div>
+            <div class="gallery-grid">
+                <div class="gallery-item"><img src="assets/background-pics/DSC_3901.JPG" alt="תמונה 1"
+                        onclick="openLightbox(this)"></div>
+                <div class="gallery-item"><img src="assets/background-pics/DSC_4150.JPG" alt="תמונה 2"
+                        onclick="openLightbox(this)"></div>
+                <div class="gallery-item"><img src="assets/background-pics/DSC_4151.JPG" alt="תמונה 3"
+                        onclick="openLightbox(this)"></div>
+                <div class="gallery-item"><img src="assets/background-pics/DSC_4628.JPG" alt="תמונה 4"
+                        onclick="openLightbox(this)"></div>
+                <div class="gallery-item"><img src="assets/background-pics/DSC_4639.JPG" alt="תמונה 5"
+                        onclick="openLightbox(this)"></div>
             </div>
 
-            <!-- Footer -->
-            <footer id="contact" class="glass-panel">
-                <div class="container footer-content">
-                    <div class="footer-section">
-                        <h3>צור קשר</h3>
-                        <p><i class="fas fa-envelope"></i> elephants19766@gmail.com</p>
-                    </div>
-                    <div class="social-links">
-                        <a href="https://www.instagram.com/ace_elephants_19766?igsh=amg4djYwNWZnY3U5"
-                            class="social-icon" target="_blank" rel="noopener noreferrer"><i
-                                class="fab fa-instagram"></i></a>
-                        <a href="https://github.com/AceElephants19766" class="social-icon" target="_blank"
-                            rel="noopener noreferrer"><i class="fab fa-github"></i></a>
-                        <a href="https://www.youtube.com/@AceElephants" class="social-icon" target="_blank"
-                            rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
-                <div class="credits">
-                    <p>&copy; 2026 Ace Elephants #19766. All Rights Reserved</p>
-                </div>
-            </footer>
+            <!-- Lightbox Modal -->
+            <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+                <span class="close-btn">&times;</span>
+                <img class="lightbox-content" id="lightbox-img">
+            </div>
+        </div>
+    </section>
 
-            <script src="js/script.js"></script>
+    <!-- Footer -->
+    <footer id="contact" class="glass-panel">
+        <div class="container footer-content">
+            <div class="footer-section">
+                <h3>צור קשר</h3>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:elephants19766@gmail.com"
+                        style="color: inherit; text-decoration: none;">elephants19766@gmail.com</a></p>
+            </div>
+            <div class="social-links">
+                <a href="https://www.instagram.com/ace_elephants_19766?igsh=amg4djYwNWZnY3U5" class="social-icon"
+                    target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                <a href="https://github.com/AceElephants19766" class="social-icon" target="_blank"
+                    rel="noopener noreferrer"><i class="fab fa-github"></i></a>
+                <a href="https://www.youtube.com/@AceElephants" class="social-icon" target="_blank"
+                    rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+        <div class="credits">
+            <p>&copy; 2026 Ace Elephants #19766. כל הזכויות שמורות.</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+    <script src="js/script.js"></script>
 </body>
 
 </html>

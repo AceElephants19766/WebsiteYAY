@@ -49,5 +49,113 @@
 
 .code-container code {
     color: #bd00ff;
-    font-family: 'Consolas', monospace;
+    font-family: 'Consolas',
+        monospace;
+}
+
+/* Collapsible Code Logic */
+.code-container {
+    position: relative;
+    transition: max-height 0.5s ease;
+    /* padding-bottom removed since button is now top-right */
+}
+
+.code-container.collapsed {
+    max-height: 300px;
+    overflow: hidden;
+}
+
+/* Gradient overlay for collapsed state */
+.code-container.collapsed::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 150px;
+    background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.9));
+    pointer-events: none;
+}
+
+.code-toggle-btn {
+    position: sticky;
+    /* Sticky to stay in view even if scrolled */
+    top: 10px;
+    float: right;
+    /* Helper for sticky positioning context if needed, but sticky top/right usually works */
+    margin-left: auto;
+    /* Push to right */
+    right: 10px;
+    /* If absolute/sticky */
+
+    background: var(--neon-purple);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    /* Smaller size */
+    height: 30px;
+    /* Smaller size */
+    font-size: 0.8rem;
+    /* Smaller icon */
+    cursor: pointer;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px var(--primary-purple);
+
+    /* Ensure it sits on top right properly */
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    left: auto;
+    bottom: auto;
+    transform: none;
+}
+
+.code-toggle-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px var(--neon-purple);
+}
+
+.code-container:not(.collapsed) .code-toggle-btn {
+    transform: rotate(180deg);
+}
+
+.code-container:not(.collapsed) .code-toggle-btn:hover {
+    transform: rotate(180deg) scale(1.1);
+}
+
+/* Video Responsive Container */
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    /* 16:9 Aspect Ratio */
+    height: 0;
+    overflow: hidden;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    border: 1px solid var(--border-color);
+    background: #000;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/* Static Content Modifier (for PDF/Icon placeholders) */
+.video-container.static-content {
+    padding-bottom: 0;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ace Elephants | Software</title>
+    <title>Ace Elephants | תוכנה</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,6 +15,7 @@
     <!-- Linking to main CSS (adjusted path) -->
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/subpages.css">
+    <link rel="icon" href="/assets/icons/logo.svg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
@@ -23,41 +24,106 @@
     <canvas id="bg-canvas"></canvas>
 
     <!-- Back Button -->
-    <a href="../index.html#about" class="cta-button back-btn-fixed" data-i18n="backValues">
+    <a href="/index.html#teams" class="cta-button back-btn-fixed">
         <i class="fas fa-arrow-right"></i> חזרה
     </a>
 
     <div class="container">
         <header class="page-header fade-in-up">
-            <h1 class="main-title glow-text" data-i18n="softwareTitle">צוות תוכנה</h1>
-            <p class="hero-subtitle" data-i18n="softwareSubtitle">המוח מאחורי הרובוט</p>
+            <h1 class="main-title glow-text">צוות תוכנה</h1>
+            <p class="hero-subtitle">המוח שמאחורי הרובוט</p>
         </header>
 
         <section class="content-section glass-panel" style="padding: 40px;">
-            <h2 class="section-title" style="font-size: 2rem; margin-bottom: 30px;" data-i18n="softwareProcessTitle">התהליך שלנו</h2>
-            <p data-i18n="softwareProcessText">כאן נכתוב על תהליך הפיתוח, האלגוריתמים, והשימוש ב-Java ו-OpenCV. התוכנה שלנו מאפשרת לרובוט לפעול באופן
-                אוטונומי ולזהות אלמנטים במשחק בזמן אמת.</p>
+            <h2 class="section-title" style="font-size: 2rem; margin-bottom: 30px;">מערכת נבחרת שלנו</h2>
+            <p> אחת מהמערכות שמשמשות אותנו הרבה היא מצב Oriented Field. מצב Oriented Field הוא שיטת נהיגה שבה כיוון
+                התנועה של הרובוט נקבע
+                בהתאם לנקודת המבט של
+                הנהג, ולא לפי הציר הפנימי של הרובוט עצמו .
+                שיטה זו מאפשרת לנהג שליטה אינטואיטיבית יותר, שכן תנועות ההיגוי נשארות עקביות ללא תלות בכיוון
+                הרובוט. היתרון המרכזי הוא שיפור משמעותי ביכולות התמרון, המאפשר ביצוע תנועות מורכבות ומדויקות
+                יותר במהלך המשחק, תוך תגובה מהירה למצבים דינמיים במגרש.
+                למתעניינים הנה הקוד <i class="fas fa-chevron-down" style="font-size: 0.8em;"></i></p>
 
-            <div class="code-container">
-                <pre><code>public class AceRobot extends Robot {
-    @Override
-    public void runOpMode() {
-        telemetry.addData("Status", "Initialized");
-        waitForStart();
-        // Autonomous Magic Happens Here
-        visionSystem.detectGameElement();
+            <div id="codeBlock" class="code-container collapsed">
+                <button class="code-toggle-btn" onclick="toggleCode()" aria-label="Toggle Code">
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <pre><code>frontLeft = hardwareMap.get(DcMotorEx.class, "frontLeft");
+        frontRight = hardwareMap.get(DcMotorEx.class, "frontRight");
+        backRight = hardwareMap.get(DcMotorEx.class, "backRight");
+        backLeft = hardwareMap.get(DcMotorEx.class, "backLeft");
+
+        backLeft.setDirection(DcMotorSimple.Direction.REVERSE);
+        frontRight.setDirection(DcMotorSimple.Direction.REVERSE);
+
+        frontLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        frontRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        backLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        backRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+
+    }
+
+    public void resetIMU(){
+        imu.resetYaw();
+    }
+
+    public void arcadeDrive(Gamepad gamepad1) {
+        double x = -gamepad1.left_stick_x;
+        double y = -gamepad1.left_stick_y;
+        double zSpin = gamepad1.right_stick_x;
+
+        arcadeDrive(x, y, zSpin);
+    }
+
+    public void fieldOrientedDrive(Gamepad gamepad1) {
+        double x = -gamepad1.left_stick_x;
+        double y = -gamepad1.left_stick_y;
+        double zSpin = gamepad1.right_stick_x;
+
+        Vector2d joystickVec = new Vector2d(x,y);
+        Vector2d fieldOrientedVec = joystickVec.rotateBy(getAngleYaw());
+
+        arcadeDrive(fieldOrientedVec.getX(), fieldOrientedVec.getY(), zSpin);
+    }
+
+    public void arcadeDrive(double x, double y, double zSpin) {
+
+        double denominator = Math.max(Math.abs(x) + Math.abs(y) + Math.abs(zSpin), 1);
+
+        frontLeft.setPower((y - x + zSpin) / denominator);
+        frontRight.setPower((y + x - zSpin) / denominator);
+        backRight.setPower((y - x - zSpin) / denominator);
+        backLeft.setPower((y + x + zSpin) / denominator);
+
+    }
+
+    public double getAngleYaw() {
+        return imu.getRobotYawPitchRollAngles().getYaw(AngleUnit.DEGREES);
     }
 }</code></pre>
             </div>
         </section>
 
         <section class="content-section">
-            <h2 class="section-title glow-text" data-i18n="softwareGalleryTitle">גלריה טכנית</h2>
+            <h2 class="section-title glow-text">גלריה</h2>
             <div class="gallery-grid">
-                <!-- Placeholders -->
-                <div class="gallery-item glass-panel"></div>
-                <div class="gallery-item glass-panel"></div>
-                <div class="gallery-item glass-panel"></div>
+                <div class="gallery-item glass-panel">
+                    <img src="../assets/pics/DSCF7173.JPG" alt="Software 1"
+                        style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="gallery-item glass-panel">
+                    <img src="../assets/pics/S0857943 (1).jpg" alt="Software 2"
+                        style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="gallery-item glass-panel">
+                    <img src="../assets/pics/WhatsApp Image 2026-02-05 at 22.04.19.jpeg" alt="Software 3"
+                        style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="gallery-item glass-panel">
+                    <img src="../assets/pics/WhatsApp Image 2026-02-05 at 22.05.38.jpeg" alt="Software 4"
+                        style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
             </div>
         </section>
     </div>
@@ -67,16 +133,23 @@
         <div class="container footer-content">
             <div class="footer-section">
                 <h3>צור קשר</h3>
-                <p>Email: contact@ftcteam.com</p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:elephants19766@gmail.com"
+                        style="color: inherit; text-decoration: none;">elephants19766@gmail.com</a></p>
             </div>
             <div class="credits">
-                <p>&copy; 2026 FTC Team. All Rights Reserved.</p>
+                <p>&copy; 2026 Ace Elephants #19766. כל הזכויות שמורות.</p>
             </div>
         </div>
     </footer>
 
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="close-btn">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+    </div>
+
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
     <script src="../js/script.js"></script>
-    <script src="../js/subpages.js"></script>
 </body>
 
 </html>

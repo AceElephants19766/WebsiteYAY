@@ -164,17 +164,7 @@ if (themeToggleBtn) {
     });
 }
 
-// --- Context-Aware Language Switcher ---
-const langSwitchLink = document.querySelector('.lang-switch');
 
-if (langSwitchLink) {
-    langSwitchLink.addEventListener('click', (e) => {
-        e.preventDefault();
-        const targetUrl = langSwitchLink.getAttribute('href');
-        const currentHash = window.location.hash;
-        window.location.href = targetUrl + currentHash;
-    });
-}
 
 // --- Dynamic Floating Gallery ---
 function initFloatingGallery() {
@@ -254,3 +244,80 @@ document.addEventListener('DOMContentLoaded', () => {
     // Recalculate height on load to ensure we cover full page
     setTimeout(initFloatingGallery, 100);
 });
+
+// --- Lightbox Modal Logic ---
+function openLightbox(imgElement) {
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+
+    if (lightbox && lightboxImg) {
+        lightboxImg.src = imgElement.src;
+        lightbox.style.display = 'flex';
+        // Small delay to trigger animation
+        setTimeout(() => {
+            lightbox.classList.add('active');
+        }, 10);
+    }
+}
+
+function closeLightbox() {
+    const lightbox = document.getElementById('lightbox');
+    if (lightbox) {
+        lightbox.classList.remove('active');
+        setTimeout(() => {
+            lightbox.style.display = 'none';
+        }, 300); // Wait for transition
+    }
+}
+
+// Close on Escape key
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        closeLightbox();
+    }
+});
+
+// --- Auto-attach Lightbox to Gallery Images ---
+document.addEventListener('DOMContentLoaded', () => {
+    const galleryImages = document.querySelectorAll('.gallery-item img');
+    galleryImages.forEach(img => {
+        img.addEventListener('click', () => openLightbox(img));
+        img.style.cursor = 'pointer'; // Visual cue
+    });
+});
+
+// --- Collapsible Code Toggle ---
+function toggleCode() {
+    const codeBlock = document.getElementById('codeBlock');
+    if (codeBlock) {
+        codeBlock.classList.toggle('collapsed');
+    }
+}
+
+// --- Lenis Momentum Scrolling ---
+const lenis = new Lenis({
+    duration: 1.2,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    smooth: true
+});
+
+function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+}
+
+requestAnimationFrame(raf);
+
+// --- Smooth Scrolling for Navigation (using Lenis) ---
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+
+        if (targetElement) {
+            lenis.scrollTo(targetElement);
+        }
+    });
+});
+

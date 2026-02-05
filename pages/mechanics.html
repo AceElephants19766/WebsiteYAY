@@ -4,21 +4,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ace Elephants | Mechanics</title>
-    <!-- Fonts & CSS -->
+    <title>Ace Elephants | מכניקה</title>
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700;900&family=Orbitron:wght@400;700&display=swap"
         rel="stylesheet">
+
+    <!-- Linking to main CSS (adjusted path) -->
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/subpages.css">
+    <link rel="icon" href="/assets/icons/logo.svg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
 <body>
+    <!-- Background Canvas -->
     <canvas id="bg-canvas"></canvas>
-    <a href="../index.html#about" class="cta-button back-btn-fixed"><i class="fas fa-arrow-right"></i> חזרה</a>
+
+    <!-- Back Button -->
+    <a href="/index.html#teams" class="cta-button back-btn-fixed">
+        <i class="fas fa-arrow-right"></i> חזרה
+    </a>
 
     <div class="container">
         <header class="page-header fade-in-up">
@@ -26,34 +34,58 @@
             <p class="hero-subtitle">הכוח שמניע את הכל</p>
         </header>
 
-        <section class="glass-panel" style="padding: 40px; margin-bottom: 40px;">
-            <h2 class="section-title" style="font-size: 2rem;">תכנון וייצור (CAD & Build)</h2>
-            <p>תהליך המכניקה שלנו מתחיל בשרטוטים ב-CAD, עובר להדפסות תלת-ממד וחיתוך לייזר, ומסתיים בהרכבה מדויקת. אנו
-                משתמשים בחומרים מתקדמים ובטכניקות ייצור מגוונות כדי ליצור רובוט מהיר, חזק ואמין.</p>
+        <section class="content-section glass-panel" style="padding: 40px;">
+            <h2 class="section-title" style="font-size: 2rem; margin-bottom: 30px;">תכנון וייצור</h2>
+            <p>התהליך המכני שלנו מתחיל בתכנון ב-CAD וממשיך לייצור והרכבה מדויקת של הרובוט. אנחנו עובדים עם פרופילי
+                אלומיניום, ברזלים ומערכות מוכנות של
+                goBILDA ו-REV Robotics, ומשלבים הדפסות תלת־ממד לפי הצורך. לאורך כל הדרך אנחנו בודקים, משפרים ומחזקים,
+                כדי לבנות רובוט חזק, אמין ומתאים לדרישות המשחק – כזה שעובד טוב לא רק על הנייר אלא גם במגרש.</p>
         </section>
 
         <section class="content-section">
             <h2 class="section-title glow-text">תהליך הבנייה</h2>
             <div class="gallery-grid">
-                <div class="gallery-item glass-panel"></div>
-                <div class="gallery-item glass-panel"></div>
-                <div class="gallery-item glass-panel"></div>
-                <div class="gallery-item glass-panel"></div>
+                <div class="gallery-item glass-panel">
+                    <img src="../assets/pics/S0747930.JPG" alt="Mechanics 1"
+                        style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="gallery-item glass-panel">
+                    <img src="../assets/pics/DSCF7626.JPG" alt="Mechanics 2"
+                        style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="gallery-item glass-panel">
+                    <img src="../assets/pics/DSC_3908.JPG" alt="Mechanics 3"
+                        style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="gallery-item glass-panel">
+                    <img src="../assets/pics/DSC_4150.JPG" alt="Mechanics 4"
+                        style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
             </div>
         </section>
     </div>
 
-    <footer class="glass-panel" style="margin-top:50px;">
+    <!-- Footer -->
+    <footer id="contact" class="glass-panel">
         <div class="container footer-content">
             <div class="footer-section">
                 <h3>צור קשר</h3>
-                <p>contact@ftcteam.com</p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:elephants19766@gmail.com"
+                        style="color: inherit; text-decoration: none;">elephants19766@gmail.com</a></p>
             </div>
             <div class="credits">
-                <p>&copy; 2026 FTC Team. All Rights Reserved.</p>
+                <p>&copy; 2026 Ace Elephants #19766. כל הזכויות שמורות.</p>
             </div>
         </div>
     </footer>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="close-btn">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+    </div>
+
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
     <script src="../js/script.js"></script>
 </body>
 

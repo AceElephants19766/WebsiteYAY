@@ -4,78 +4,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ace Elephants | Marketing</title>
+    <title>Ace Elephants | מדיה ושיווק</title>
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700;900&family=Orbitron:wght@400;700&display=swap"
         rel="stylesheet">
+
+    <!-- Linking to main CSS (adjusted path) -->
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/subpages.css">
+    <link rel="icon" href="/assets/icons/logo.svg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        .page-header {
-            padding-top: 120px;
-            padding-bottom: 60px;
-            text-align: center;
-        }
-
-        .back-btn-fixed {
-            position: fixed;
-            top: 30px;
-            right: 30px;
-            z-index: 1001;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: bold;
-        }
-    </style>
 </head>
 
 <body>
+    <!-- Background Canvas -->
     <canvas id="bg-canvas"></canvas>
+
     <!-- Back Button -->
-    <a href="../index.html#about" class="cta-button back-btn-fixed" data-i18n="backValues">
+    <a href="/index.html#teams" class="cta-button back-btn-fixed">
         <i class="fas fa-arrow-right"></i> חזרה
     </a>
 
     <div class="container">
         <header class="page-header fade-in-up">
-            <h1 class="main-title glow-text" data-i18n="marketingTitle">שיווק ומדיה</h1>
-            <p class="hero-subtitle" data-i18n="marketingSubtitle">הקול והפנים של הקבוצה</p>
+            <h1 class="main-title glow-text">שיווק ומדיה</h1>
+            <p class="hero-subtitle">הקול והפנים של הקבוצה</p>
         </header>
 
-        <section class="glass-panel" style="padding: 40px; margin-bottom: 40px;">
-            <h2 class="section-title" style="font-size: 2rem;" data-i18n="marketingProcessTitle">מיתוג ופרסום</h2>
-            <p data-i18n="marketingProcessText">אנחנו דואגים שהעולם יידע מי אנחנו. ניהול רשתות חברתיות, גיוס ספונסרים,
-                ועיצוב הזהות שלנו הם חלק בלתי נפרד
-                מההצלחה של הקבוצה. אנו יוצרים תוכן ויזואלי, סרטונים ופוסטים כדי לשתף את המסע שלנו.</p>
+        <section class="content-section glass-panel" style="padding: 40px;">
+            <h2 class="section-title" style="font-size: 2rem; margin-bottom: 30px;">מיתוג ופרסום</h2>
+            <p>כדי שהעשייה שלנו תגיע החוצה, אנחנו משקיעים במיתוג ופרסום של הקבוצה. חברי הצוות מנהלים את הרשתות החברתיות,
+                יוצרים תוכן ויזואלי וסרטונים, ומשתפים את התהליך, האתגרים וההצלחות לאורך העונה. במקביל, אנחנו עובדים על
+                בניית זהות ברורה לקבוצה ועל קשר עם ספונסרים וגורמים תומכים. כל אלה מאפשרים לנו לחשוף את הפעילות שלנו,
+                לחזק את הנוכחות של הקבוצה ולהבטיח המשכיות ויציבות לאורך זמן.</p>
         </section>
 
         <section class="content-section">
-            <h2 class="section-title glow-text" data-i18n="marketingGalleryTitle">התוצרים שלנו</h2>
+            <h2 class="section-title glow-text">גלרית תמונות</h2>
             <div class="gallery-grid">
-                <div class="gallery-item glass-panel"></div>
-                <div class="gallery-item glass-panel"></div>
+                <div class="gallery-item glass-panel">
+                    <img src="../assets/pics/DSCF7197.JPG" alt="Marketing 1"
+                        style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="gallery-item glass-panel">
+                    <img src="../assets/pics/DSCF7173.JPG" alt="Marketing 2"
+                        style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <div class="gallery-item glass-panel">
+                    <img src="../assets/pics/S0697822.jpg" alt="Marketing 3"
+                        style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
             </div>
         </section>
     </div>
 
-    <footer class="glass-panel" style="margin-top:50px;">
+    <!-- Footer -->
+    <footer id="contact" class="glass-panel">
         <div class="container footer-content">
             <div class="footer-section">
-                <h3 data-i18n="footerContact">צור קשר</h3>
-                <p>contact@ftcteam.com</p>
+                <h3>צור קשר</h3>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:elephants19766@gmail.com"
+                        style="color: inherit; text-decoration: none;">elephants19766@gmail.com</a></p>
             </div>
             <div class="credits">
-                <p>&copy; 2026 FTC Team. All Rights Reserved.</p>
+                <p>&copy; 2026 Ace Elephants #19766. כל הזכויות שמורות.</p>
             </div>
         </div>
     </footer>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="close-btn">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+    </div>
+
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
     <script src="../js/script.js"></script>
-    <script src="../js/subpages.js"></script>
 </body>
 
 </html>

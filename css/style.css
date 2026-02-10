@@ -336,6 +336,10 @@ h3 {
     display: none;
 }
 
+.mobile-nav-toggle {
+    display: none;
+}
+
 
 /* Hero Section */
 .hero-section {

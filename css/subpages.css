@@ -159,3 +159,25 @@
     align-items: center;
     justify-content: center;
 }
+
+@media (max-width: 768px) {
+    .page-header {
+        padding-top: 100px;
+        padding-bottom: 40px;
+    }
+
+    .page-header h1 {
+        font-size: 2rem !important;
+    }
+
+    .back-btn-fixed {
+        top: 15px;
+        right: 15px;
+        padding: 10px 15px !important;
+        font-size: 0.8rem !important;
+    }
+
+    .content-section {
+        padding: 20px 15px;
+    }
+}

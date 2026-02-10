@@ -99,10 +99,10 @@
             opacity: 0.5;
         }
 
-        .back-btn-fixed {
+        .back-btn-fixed,
+        .admin-btn-fixed {
             position: fixed;
             top: 25px;
-            right: 25px;
             z-index: 1000;
             background: var(--primary-purple);
             color: white;
@@ -114,7 +114,16 @@
             box-shadow: 0 4px 15px rgba(157, 0, 255, 0.3);
         }
 
-        .back-btn-fixed:hover {
+        .back-btn-fixed {
+            right: 25px;
+        }
+
+        .admin-btn-fixed {
+            right: 200px;
+        }
+
+        .back-btn-fixed:hover,
+        .admin-btn-fixed:hover {
             background: var(--neon-purple);
             box-shadow: 0 0 24px var(--neon-purple);
             transform: translateY(-2px);
@@ -124,6 +133,10 @@
 
 <body>
     <div id="bg-canvas"></div>
+
+    <a href="admin.html" class="admin-btn-fixed">
+        <i class="fas fa-user-shield"></i> כניסת מנהל
+    </a>
 
     <a href="index.html" class="back-btn-fixed">
         <i class="fas fa-arrow-left"></i> חזרה לדף הבית

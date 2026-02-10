@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>עדכונים | Ace Elephants #19766</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/subpages.css">
+    <style>
+        .news-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .news-header {
+            text-align: center;
+            padding: 100px 20px 50px;
+        }
+
+        .news-header h1 {
+            font-size: 3rem;
+            color: var(--neon-purple);
+            margin-bottom: 15px;
+        }
+
+        .news-header p {
+            font-size: 1.2rem;
+            color: var(--text-dim);
+        }
+
+        .update-card {
+            background: var(--bg-panel);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .update-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(157, 0, 255, 0.3);
+        }
+
+        .update-card h2 {
+            font-size: 1.8rem;
+            color: var(--neon-purple);
+            margin-bottom: 15px;
+        }
+
+        .update-meta {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            color: var(--text-dim);
+            font-size: 0.9rem;
+        }
+
+        .update-meta i {
+            color: var(--primary-purple);
+        }
+
+        .update-body {
+            line-height: 1.8;
+            color: var(--text-main);
+            white-space: pre-wrap;
+        }
+
+        .loading,
+        .error,
+        .empty {
+            text-align: center;
+            padding: 80px 20px;
+            color: var(--text-dim);
+            font-size: 1.2rem;
+        }
+
+        .error {
+            color: #ff4d4f;
+        }
+
+        .empty {
+            padding: 120px 20px;
+        }
+
+        .empty i {
+            font-size: 4rem;
+            color: var(--primary-purple);
+            margin-bottom: 20px;
+            opacity: 0.5;
+        }
+
+        .back-btn-fixed {
+            position: fixed;
+            top: 25px;
+            right: 25px;
+            z-index: 1000;
+            background: var(--primary-purple);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(157, 0, 255, 0.3);
+        }
+
+        .back-btn-fixed:hover {
+            background: var(--neon-purple);
+            box-shadow: 0 0 25px var(--neon-purple);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="bg-canvas"></div>
+
+    <a href="index.html" class="back-btn-fixed">
+        <i class="fas fa-arrow-left"></i> חזרה לדף הבית
+    </a>
+
+    <div class="news-container">
+        <header class="news-header">
+            <h1><i class="fas fa-newspaper"></i> עדכונים וחדשות</h1>
+            <p>עדכונים אחרונים מהקבוצה</p>
+        </header>
+
+        <div id="updatesList">
+            <div class="loading">
+                <i class="fas fa-spinner fa-spin"></i> טוען עדכונים...
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+        const API_BASE = '/.netlify/functions';
+
+        // Load updates on page load
+        async function loadUpdates() {
+            const listEl = document.getElementById('updatesList');
+
+            try {
+                const response = await fetch(`${API_BASE}/updates?limit=20`);
+
+                if (!response.ok) {
+                    throw new Error('Failed to load updates');
+                }
+
+                const data = await response.json();
+
+                if (data.updates.length === 0) {
+                    listEl.innerHTML = `
+                        <div class="empty">
+                            <i class="fas fa-inbox"></i>
+                            <p>אין עדכונים זמינים כרגע</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                renderUpdates(data.updates);
+            } catch (error) {
+                console.error('Error loading updates:', error);
+                listEl.innerHTML = `
+                    <div class="error">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p>שגיאה בטעינת העדכונים. אנא נסה שוב מאוחר יותר.</p>
+                    </div>
+                `;
+            }
+        }
+
+        // Render updates
+        function renderUpdates(updates) {
+            const listEl = document.getElementById('updatesList');
+
+            const html = updates.map(update => {
+                const publishedDate = new Date(update.published_at || update.created_at);
+                const formattedDate = publishedDate.toLocaleDateString('he-IL', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                });
+                const formattedTime = publishedDate.toLocaleTimeString('he-IL', {
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
+
+                return `
+                    <article class="update-card glass-panel">
+                        <h2>${escapeHtml(update.title)}</h2>
+                        <div class="update-meta">
+                            <span><i class="fas fa-calendar"></i> ${formattedDate}</span>
+                            <span><i class="fas fa-clock"></i> ${formattedTime}</span>
+                        </div>
+                        <div class="update-body">${escapeHtml(update.body)}</div>
+                    </article>
+                `;
+            }).join('');
+
+            listEl.innerHTML = html;
+        }
+
+        // Helper: Escape HTML
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // Load updates on page load
+        loadUpdates();
+    </script>
+</body>
+
+</html>

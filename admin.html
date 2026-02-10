@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Ace Elephants</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .admin-container {
+            max-width: 1200px;
+            margin: 100px auto 50px;
+            padding: 20px;
+        }
+
+        .login-box,
+        .admin-panel {
+            background: var(--bg-panel);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .login-box {
+            max-width: 400px;
+            margin: 150px auto;
+        }
+
+        .login-box h1 {
+            text-align: center;
+            color: var(--neon-purple);
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-main);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-main);
+            font-family: 'Heebo', sans-serif;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            background: var(--primary-purple);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background: var(--neon-purple);
+            box-shadow: 0 0 20px var(--neon-purple);
+        }
+
+        .btn-full {
+            width: 100%;
+        }
+
+        .btn-danger {
+            background: #dc3545;
+        }
+
+        .btn-danger:hover {
+            background: #c82333;
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+        }
+
+        .error-msg {
+            color: #ff4d4f;
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .success-msg {
+            color: #52c41a;
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .admin-panel {
+            display: none;
+        }
+
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .admin-header h1 {
+            color: var(--neon-purple);
+        }
+
+        .updates-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 10px;
+            margin-top: 20px;
+        }
+
+        .updates-table th {
+            text-align: right;
+            padding: 12px;
+            color: var(--neon-purple);
+            font-weight: 600;
+        }
+
+        .updates-table td {
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.03);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .updates-table tr td:first-child {
+            border-right: 1px solid var(--border-color);
+            border-radius: 0 8px 8px 0;
+        }
+
+        .updates-table tr td:last-child {
+            border-left: 1px solid var(--border-color);
+            border-radius: 8px 0 0 8px;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .status-published {
+            background: rgba(82, 196, 26, 0.2);
+            color: #52c41a;
+            border: 1px solid #52c41a;
+        }
+
+        .status-draft {
+            background: rgba(250, 173, 20, 0.2);
+            color: #faad14;
+            border: 1px solid #faad14;
+        }
+
+        .action-btns {
+            display: flex;
+            gap: 10px;
+        }
+
+        .action-btns button {
+            padding: 6px 12px;
+            font-size: 0.9rem;
+        }
+
+        .form-section {
+            margin-top: 40px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+        }
+
+        .form-section h2 {
+            color: var(--neon-purple);
+            margin-bottom: 20px;
+        }
+
+        .form-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-dim);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="bg-canvas"></div>
+
+    <!-- Login Box -->
+    <div class="login-box" id="loginBox">
+        <h1><i class="fas fa-lock"></i> כניסת מנהל</h1>
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="username">שם משתמש</label>
+                <input type="text" id="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">סיסמה</label>
+                <input type="password" id="password" required>
+            </div>
+            <button type="submit" class="btn btn-full">התחבר</button>
+            <div class="error-msg" id="loginError"></div>
+        </form>
+    </div>
+
+    <!-- Admin Panel -->
+    <div class="admin-container admin-panel" id="adminPanel">
+        <div class="admin-header">
+            <h1><i class="fas fa-newspaper"></i> ניהול עדכונים</h1>
+            <button class="btn btn-danger" id="logoutBtn">
+                <i class="fas fa-sign-out-alt"></i> התנתק
+            </button>
+        </div>
+
+        <!-- Updates List -->
+        <div id="updatesList">
+            <div class="loading">טוען עדכונים...</div>
+        </div>
+
+        <!-- Create/Edit Form -->
+        <div class="form-section">
+            <h2 id="formTitle">יצירת עדכון חדש</h2>
+            <form id="updateForm">
+                <input type="hidden" id="updateId">
+                <div class="form-group">
+                    <label for="updateTitle">כותרת</label>
+                    <input type="text" id="updateTitle" required>
+                </div>
+                <div class="form-group">
+                    <label for="updateBody">תוכן</label>
+                    <textarea id="updateBody" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="updateStatus">סטטוס</label>
+                    <select id="updateStatus">
+                        <option value="draft">טיוטה</option>
+                        <option value="published">פורסם</option>
+                    </select>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn" id="saveBtn">שמור</button>
+                    <button type="button" class="btn btn-secondary" id="cancelBtn">בטל</button>
+                </div>
+                <div class="success-msg hidden" id="formSuccess"></div>
+                <div class="error-msg" id="formError"></div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = '/.netlify/functions';
+        let token = localStorage.getItem('adminToken');
+
+        // Check if already logged in
+        if (token) {
+            showAdminPanel();
+        }
+
+        // Login Form
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const errorEl = document.getElementById('loginError');
+
+            errorEl.textContent = '';
+
+            try {
+                const response = await fetch(`${API_BASE}/login`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, password })
+                });
+
+                const data = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(data.error || 'שגיאת התחברות');
+                }
+
+                token = data.token;
+                localStorage.setItem('adminToken', token);
+                showAdminPanel();
+            } catch (error) {
+                errorEl.textContent = error.message;
+            }
+        });
+
+        // Logout
+        document.getElementById('logoutBtn').addEventListener('click', () => {
+            localStorage.removeItem('adminToken');
+            token = null;
+            location.reload();
+        });
+
+        // Show Admin Panel
+        async function showAdminPanel() {
+            document.getElementById('loginBox').style.display = 'none';
+            document.getElementById('adminPanel').style.display = 'block';
+            await loadUpdates();
+        }
+
+        // Load Updates
+        async function loadUpdates() {
+            const listEl = document.getElementById('updatesList');
+
+            try {
+                const response = await fetch(`${API_BASE}/admin-updates`, {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+
+                if (!response.ok) {
+                    if (response.status === 401) {
+                        localStorage.removeItem('adminToken');
+                        location.reload();
+                        return;
+                    }
+                    throw new Error('Failed to load updates');
+                }
+
+                const data = await response.json();
+                renderUpdates(data.updates);
+            } catch (error) {
+                listEl.innerHTML = `<div class="error-msg">שגיאה בטעינת עדכונים: ${error.message}</div>`;
+            }
+        }
+
+        // Render Updates Table
+        function renderUpdates(updates) {
+            const listEl = document.getElementById('updatesList');
+
+            if (updates.length === 0) {
+                listEl.innerHTML = '<div class="loading">אין עדכונים</div>';
+                return;
+            }
+
+            const tableHTML = `
+                <table class="updates-table">
+                    <thead>
+                        <tr>
+                            <th>כותרת</th>
+                            <th>סטטוס</th>
+                            <th>תאריך יצירה</th>
+                            <th>פעולות</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${updates.map(update => `
+                            <tr>
+                                <td><strong>${escapeHtml(update.title)}</strong></td>
+                                <td>
+                                    <span class="status-badge status-${update.status}">
+                                        ${update.status === 'published' ? 'פורסם' : 'טיוטה'}
+                                    </span>
+                                </td>
+                                <td>${new Date(update.created_at).toLocaleDateString('he-IL')}</td>
+                                <td>
+                                    <div class="action-btns">
+                                        <button class="btn" onclick="editUpdate('${update.id}')">
+                                            <i class="fas fa-edit"></i> ערוך
+                                        </button>
+                                        <button class="btn btn-danger" onclick="deleteUpdate('${update.id}')">
+                                            <i class="fas fa-trash"></i> מחק
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            `;
+
+            listEl.innerHTML = tableHTML;
+        }
+
+        // Edit Update
+        window.editUpdate = async function (id) {
+            const response = await fetch(`${API_BASE}/admin-updates`, {
+                headers: { 'Authorization': `Bearer ${token}` }
+            });
+            const data = await response.json();
+            const update = data.updates.find(u => u.id === id);
+
+            if (update) {
+                document.getElementById('formTitle').textContent = 'עריכת עדכון';
+                document.getElementById('updateId').value = update.id;
+                document.getElementById('updateTitle').value = update.title;
+                document.getElementById('updateBody').value = update.body;
+                document.getElementById('updateStatus').value = update.status;
+                document.getElementById('updateForm').scrollIntoView({ behavior: 'smooth' });
+            }
+        };
+
+        // Delete Update
+        window.deleteUpdate = async function (id) {
+            if (!confirm('האם אתה בטוח שברצונך למחוק עדכון זה?')) {
+                return;
+            }
+
+            try {
+                const response = await fetch(`${API_BASE}/admin-updates?id=${id}`, {
+                    method: 'DELETE',
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+
+                if (!response.ok) throw new Error('Failed to delete');
+
+                await loadUpdates();
+            } catch (error) {
+                alert('שגיאה במחיקת העדכון');
+            }
+        };
+
+        // Save Update Form
+        document.getElementById('updateForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const id = document.getElementById('updateId').value;
+            const title = document.getElementById('updateTitle').value;
+            const body = document.getElementById('updateBody').value;
+            const status = document.getElementById('updateStatus').value;
+
+            const errorEl = document.getElementById('formError');
+            const successEl = document.getElementById('formSuccess');
+
+            errorEl.textContent = '';
+            successEl.textContent = '';
+            successEl.classList.add('hidden');
+
+            try {
+                const method = id ? 'PUT' : 'POST';
+                const payload = id ? { id, title, body, status } : { title, body, status };
+
+                const response = await fetch(`${API_BASE}/admin-updates`, {
+                    method,
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    const data = await response.json();
+                    throw new Error(data.error || 'Failed to save');
+                }
+
+                successEl.textContent = id ? 'העדכון נשמר בהצלחה' : 'העדכון נוצר בהצלחה';
+                successEl.classList.remove('hidden');
+
+                // Reset form
+                document.getElementById('updateForm').reset();
+                document.getElementById('updateId').value = '';
+                document.getElementById('formTitle').textContent = 'יצירת עדכון חדש';
+
+                // Reload updates
+                await loadUpdates();
+            } catch (error) {
+                errorEl.textContent = error.message;
+            }
+        });
+
+        // Cancel Edit
+        document.getElementById('cancelBtn').addEventListener('click', () => {
+            document.getElementById('updateForm').reset();
+            document.getElementById('updateId').value = '';
+            document.getElementById('formTitle').textContent = 'יצירת עדכון חדש';
+            document.getElementById('formError').textContent = '';
+            document.getElementById('formSuccess').classList.add('hidden');
+        });
+
+        // Helper: Escape HTML
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+    </script>
+</body>
+
+</html>

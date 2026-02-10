@@ -1,0 +1,17 @@
+{
+  "name": "ace-elephants-functions",
+  "version": "1.0.0",
+  "description": "Netlify Functions for admin news system",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "pg": "^8.11.3",
+    "jsonwebtoken": "^9.0.2"
+  },
+  "devDependencies": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

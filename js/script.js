@@ -202,6 +202,7 @@ function initFloatingGallery() {
 
         const img = document.createElement('img');
         img.src = images[i % images.length];
+        img.alt = "תמונת רקע צפה של פעילות הקבוצה"; // Added descriptive alt text
         item.appendChild(img);
 
         // Random Size
